@@ -14,7 +14,9 @@ export const GameOverScreen: FC<Props> = ({ onStartGame }) => {
       <MenuScreen>
         <Heading text="Game Over" />
         <Image src={skullPng} alt="skull" size="lg" />
-        <button onClick={() => onStartGame()}>Start Game</button>
+        <button className="button" onClick={() => onStartGame()}>
+          Start Game
+        </button>
       </MenuScreen>
     </>
   )

@@ -14,7 +14,9 @@ export const HomeScreen: FC<Props> = ({ onStartGame }) => {
       <MenuScreen>
         <Heading text="Pixel Thief" />
         <Image src={thiefGif} alt="thief" size="lg" />
-        <button onClick={() => onStartGame()}>Start Game</button>
+        <button className="button" onClick={() => onStartGame()}>
+          Start Game
+        </button>
       </MenuScreen>
     </>
   )

@@ -14,7 +14,9 @@ export const GameCompleteScreen: FC<Props> = ({ onStartGame }) => {
       <MenuScreen>
         <Heading text="Quest Complete" />
         <Image src={treasurePng} alt="skull" size="lg" />
-        <button onClick={() => onStartGame()}>Go Home</button>
+        <button className="button" onClick={() => onStartGame()}>
+          Go Home
+        </button>
       </MenuScreen>
     </>
   )

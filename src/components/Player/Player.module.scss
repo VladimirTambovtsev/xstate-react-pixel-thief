@@ -1,0 +1,14 @@
+.healthLayout {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: pink;
+  z-index: 9999;
+
+  display: flex;
+}
+
+.imageLayout {
+  position: absolute;
+  display: flex;
+}

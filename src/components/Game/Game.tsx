@@ -1,58 +1,105 @@
-import { useMachine } from '@xstate/react'
+import { useEffect } from 'react'
 import { gameMachine } from '../../state/game'
-import { GameCompleteScreen } from '../GameCompleteScreen/GameCompleteScreen'
-import { GameOverScreen } from '../GameOverScreen/GameOverScreen'
+import { useMachine } from '@xstate/react'
 import { HomeScreen } from '../HomeScreen/HomeScreen'
+import { GameOverScreen } from '../GameOverScreen/GameOverScreen'
+import { GameCompleteScreen } from '../GameCompleteScreen/GameCompleteScreen'
+import { GameEventType } from '../../state/game/types'
+import level1BackgroundPng from '../../assets/images/level1Background.png'
+import level2BackgroundPng from '../../assets/images/level2Background.png'
+import level3BackgroundPng from '../../assets/images/level3Background.png'
+import { LevelBackground } from '../LevelBackground/LevelBackground'
+import { Grid } from '../Grid/Grid'
+import { Player } from '../Player/Player'
+// import { Treasure } from '../Treasure'
+// import { Monster } from '../Monster'
+import { MonsterActorType } from '../../state/monsterMachine/types'
+// import { ScreenTransition } from '../ScreenTransition'
 
-export const Game = () => {
+interface PropsType {
+  fastForwardEvents?: GameEventType[]
+}
+
+export const Game = ({ fastForwardEvents }: PropsType) => {
   const [state, send] = useMachine(gameMachine)
+  const { monsterActor, playerActor } = state.children
 
   console.log('state: ', state)
 
-  if (state.matches('home'))
-    return <HomeScreen onStartGame={() => send('START_BUTTON_CLICKED')} />
+  useEffect(() => {
+    // note: batching events doesn't work at time of writing
+    if (fastForwardEvents) {
+      fastForwardEvents.forEach((event: GameEventType) => {
+        send(event)
+      })
+    }
+  }, [fastForwardEvents, send])
 
-  if (state.matches('playing')) {
-    if (state.matches('playing.level1')) {
+  const Screen = () => {
+    console.log('screen ')
+    if (state.matches('home')) {
+      console.log('home ')
+      return <HomeScreen onStartGame={() => send('START_BUTTON_CLICKED')} />
+    }
+
+    if (state.matches('playing')) {
+      if (state.matches('playing.level1')) {
+        return (
+          <>
+            <LevelBackground src={level1BackgroundPng} alt="Dungeon room" />
+            <Grid>{playerActor && <Player actor={playerActor} />}</Grid>
+          </>
+        )
+      }
+
+      if (state.matches('playing.level2')) {
+        return (
+          <>
+            <LevelBackground src={level2BackgroundPng} alt="Dungeon room" />
+            {/* <Grid>
+              {playerActor && <Player actor={playerActor} />}
+              {monsterActor && (
+                <Monster actor={monsterActor as MonsterActorType} />
+              )}
+            </Grid> */}
+          </>
+        )
+      }
+
+      if (state.matches('playing.level3')) {
+        return (
+          <>
+            <LevelBackground src={level3BackgroundPng} alt="Dungeon room" />
+            {/* <Grid>
+              {playerActor && <Player actor={playerActor} />}
+              <Treasure />
+            </Grid> */}
+          </>
+        )
+      }
+    }
+
+    if (state.matches('gameOver')) {
       return (
-        <>
-          Player level1
-          <button onClick={() => send('PLAYER_WALKED_THROUGH_DOOR')}>
-            Player won room
-          </button>
-        </>
+        <GameOverScreen onStartGame={() => send('RESTART_BUTTON_CLICKED')} />
       )
     }
-    if (state.matches('playing.level2')) {
+
+    if (state.matches('gameComplete')) {
       return (
-        <>
-          Player level2
-          <button onClick={() => send('PLAYER_WALKED_THROUGH_DOOR')}>
-            Player won room
-          </button>
-          <button onClick={() => send('PLAYER_DIED')}>Player Died</button>
-        </>
+        <GameCompleteScreen onStartGame={() => send('HOME_BUTTON_CLICKED')} />
       )
     }
-    if (state.matches('playing.level3')) {
-      return (
-        <>
-          Player level3
-          <button onClick={() => send('PLAYER_GOT_TREASURE')}>
-            Player got treasure
-          </button>
-        </>
-      )
-    }
+
+    throw Error(`Unknown game state: ${state.value}`)
   }
 
-  if (state.matches('gameOver'))
-    return <GameOverScreen onStartGame={() => send('RESTART_BUTTON_CLICKED')} />
+  console.log('state: ', state)
 
-  if (state.matches('gameComplete'))
-    return (
-      <GameCompleteScreen onStartGame={() => send('RESTART_BUTTON_CLICKED')} />
-    )
-
-  throw Error(`Uknown game state: ${state.value}`)
+  return <Screen />
+  // return (
+  //   <ScreenTransition key={JSON.stringify(state.value)}>
+  //     <Screen />
+  //   </ScreenTransition>
+  // )
 }

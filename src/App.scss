@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   display: flex;
   color: hsla(0, 0%, 0%, 1);
+  background-color: rgba(0, 0, 0, 0.5);
   font-size: 16px;
   font-family: 'VCR_OSD_MONO', monospace;
 
@@ -58,4 +59,14 @@ body {
   :focus {
     outline: 1px solid rgba(255, 255, 255, 0.596);
   }
+}
+
+.button {
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1;
 }
