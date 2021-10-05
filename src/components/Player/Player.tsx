@@ -59,7 +59,9 @@ export const Player = ({ actor }: PropsType) => {
 
   return (
     <>
-      <div className={s.healthLayout}>{/* <Health health={health} /> */}</div>
+      <div className={s.healthLayout}>
+        <Health healthCount={health} />
+      </div>
       <div
         className={s.imageLayout}
         style={{ top: position[1], left: position[0] }}

@@ -14,6 +14,7 @@ import { Player } from '../Player/Player'
 // import { Treasure } from '../Treasure'
 // import { Monster } from '../Monster'
 import { MonsterActorType } from '../../state/monsterMachine/types'
+import { Treasure } from '../Treasure/Treasure'
 // import { ScreenTransition } from '../ScreenTransition'
 
 interface PropsType {
@@ -56,12 +57,12 @@ export const Game = ({ fastForwardEvents }: PropsType) => {
         return (
           <>
             <LevelBackground src={level2BackgroundPng} alt="Dungeon room" />
-            {/* <Grid>
+            <Grid>
               {playerActor && <Player actor={playerActor} />}
-              {monsterActor && (
+              {/* {monsterActor && (
                 <Monster actor={monsterActor as MonsterActorType} />
-              )}
-            </Grid> */}
+              )} */}
+            </Grid>
           </>
         )
       }
@@ -70,10 +71,10 @@ export const Game = ({ fastForwardEvents }: PropsType) => {
         return (
           <>
             <LevelBackground src={level3BackgroundPng} alt="Dungeon room" />
-            {/* <Grid>
+            <Grid>
               {playerActor && <Player actor={playerActor} />}
               <Treasure />
-            </Grid> */}
+            </Grid>
           </>
         )
       }

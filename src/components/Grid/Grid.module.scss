@@ -11,7 +11,7 @@ $number_of_grid_columns: 12;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #fff;
+  // border: 1px solid #fff;
 }
 
 .gridSquare {
@@ -22,5 +22,5 @@ $number_of_grid_columns: 12;
   // top: $grid_square_size;
   // left: $grid_square_size;
 
-  border: 1px solid#fff;
+  // border: 1px solid#fff;
 }

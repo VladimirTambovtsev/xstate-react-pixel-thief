@@ -1,5 +1,6 @@
 .layout {
   display: flex;
+  position: absolute;
 
   & > :not(:first-child) {
     margin-left: 10px;
