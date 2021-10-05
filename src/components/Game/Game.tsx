@@ -12,16 +12,39 @@ export const Game = () => {
   if (state.matches('home'))
     return <HomeScreen onStartGame={() => send('START_BUTTON_CLICKED')} />
 
-  if (state.matches('playing'))
-    return (
-      <>
-        Playing state
-        <button onClick={() => send('PLAYER_DIED')}>Game over</button>
-        <button onClick={() => send('PLAYER_GOT_TREASURE')}>
-          Game got treasure
-        </button>
-      </>
-    )
+  if (state.matches('playing')) {
+    if (state.matches('playing.level1')) {
+      return (
+        <>
+          Player level1{' '}
+          <button onClick={() => send('PLAYER_WALKED_THROUGH_DOOR')}>
+            Player won room
+          </button>
+        </>
+      )
+    }
+    if (state.matches('playing.level2')) {
+      return (
+        <>
+          Player level2{' '}
+          <button onClick={() => send('PLAYER_WALKED_THROUGH_DOOR')}>
+            Player won room
+          </button>
+          <button onClick={() => send('PLAYER_DIED')}>Player Died</button>
+        </>
+      )
+    }
+    if (state.matches('playing.level3')) {
+      return (
+        <>
+          Player level3{' '}
+          <button onClick={() => send('PLAYER_GOT_TREASURE')}>
+            Player got treasure
+          </button>
+        </>
+      )
+    }
+  }
 
   if (state.matches('gameOver'))
     return <GameOverScreen onStartGame={() => send('RESTART_BUTTON_CLICKED')} />

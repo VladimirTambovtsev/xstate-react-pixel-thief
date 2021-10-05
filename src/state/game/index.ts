@@ -9,11 +9,15 @@ export const gameMachine = createMachine<null, GameEventType, GameStateType>({
       on: { START_BUTTON_CLICKED: 'playing' },
     },
     playing: {
+      invoke: {
+        id: `playerActor`,
+        src: `playerMachine`,
+      },
       on: {
         PLAYER_DIED: 'gameOver',
         PLAYER_GOT_TREASURE: 'gameComplete',
       },
-      initial: 'level1',
+      initial: `level1`,
       states: {
         level1: {
           on: {
@@ -26,7 +30,12 @@ export const gameMachine = createMachine<null, GameEventType, GameStateType>({
           },
         },
         level3: {
-          on: {},
+          entry: `resetPlayerCoords`,
+          on: {
+            PLAYER_MOVED: {
+              actions: `onPlayerMovedFinalLevel`,
+            },
+          },
         },
       },
     },

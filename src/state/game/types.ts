@@ -1,38 +1,56 @@
+import { CoordsType } from '../../types'
+
 export interface StartButtonClickedType {
-  type: 'START_BUTTON_CLICKED'
+  type: `START_BUTTON_CLICKED`
 }
+
 export interface PlayerDiedType {
-  type: 'PLAYER_DIED'
+  type: `PLAYER_DIED`
 }
-export interface PlayerGotTreasure {
-  type: 'PLAYER_GOT_TREASURE'
+
+export interface PlayerGotTreasureType {
+  type: `PLAYER_GOT_TREASURE`
 }
-export interface RestartButtonClicked {
-  type: 'RESTART_BUTTON_CLICKED'
+
+export interface RestartButtonClickedType {
+  type: `RESTART_BUTTON_CLICKED`
 }
+
 export interface HomeButtonClickedType {
-  type: 'HOME_BUTTON_CLICKED'
+  type: `HOME_BUTTON_CLICKED`
 }
-export interface PlayerWalkedThroughDoor {
-  type: 'PLAYER_WALKED_THROUGH_DOOR'
+
+export interface PlayerWalkedThroughDoorType {
+  type: `PLAYER_WALKED_THROUGH_DOOR`
+}
+
+export interface PlayerMovedType {
+  coords: CoordsType
+  type: `PLAYER_MOVED`
+}
+
+export interface AttackPlayerType {
+  type: `ATTACK_PLAYER`
 }
 
 export type GameEventType =
   | StartButtonClickedType
   | PlayerDiedType
-  | PlayerGotTreasure
-  | RestartButtonClicked
+  | PlayerGotTreasureType
+  | RestartButtonClickedType
   | HomeButtonClickedType
-  | PlayerWalkedThroughDoor
+  | PlayerWalkedThroughDoorType
+  | PlayerMovedType
+  | AttackPlayerType
 
 export type GameStateType = {
   context: null
   value:
-    | 'home'
-    | 'playing'
-    | 'player.level1'
-    | 'player.level2'
-    | 'player.level3'
-    | 'gameOver'
-    | 'gameComplete'
+    | `home`
+    | `playing`
+    | `playing.level1`
+    | `playing.level2`
+    | `playing.level3`
+    | `gameOver`
+    | `gameComplete`
 }
