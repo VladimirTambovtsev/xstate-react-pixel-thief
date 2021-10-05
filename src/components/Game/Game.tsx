@@ -16,7 +16,7 @@ export const Game = () => {
     if (state.matches('playing.level1')) {
       return (
         <>
-          Player level1{' '}
+          Player level1
           <button onClick={() => send('PLAYER_WALKED_THROUGH_DOOR')}>
             Player won room
           </button>
@@ -26,7 +26,7 @@ export const Game = () => {
     if (state.matches('playing.level2')) {
       return (
         <>
-          Player level2{' '}
+          Player level2
           <button onClick={() => send('PLAYER_WALKED_THROUGH_DOOR')}>
             Player won room
           </button>
@@ -37,7 +37,7 @@ export const Game = () => {
     if (state.matches('playing.level3')) {
       return (
         <>
-          Player level3{' '}
+          Player level3
           <button onClick={() => send('PLAYER_GOT_TREASURE')}>
             Player got treasure
           </button>
