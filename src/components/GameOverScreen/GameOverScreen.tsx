@@ -8,13 +8,13 @@ interface Props {
   onStartGame: () => void
 }
 
-export const GameOverScreen: FC<Props> = () => {
+export const GameOverScreen: FC<Props> = ({ onStartGame }) => {
   return (
     <>
       <MenuScreen>
         <Heading text="Game Over" />
         <Image src={skullPng} alt="skull" size="lg" />
-        <button>Start Game</button>
+        <button onClick={() => onStartGame()}>Start Game</button>
       </MenuScreen>
     </>
   )

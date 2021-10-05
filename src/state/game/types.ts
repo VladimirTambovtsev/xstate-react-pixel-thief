@@ -13,14 +13,26 @@ export interface RestartButtonClicked {
 export interface HomeButtonClickedType {
   type: 'HOME_BUTTON_CLICKED'
 }
+export interface PlayerWalkedThroughDoor {
+  type: 'PLAYER_WALKED_THROUGH_DOOR'
+}
+
 export type GameEventType =
   | StartButtonClickedType
   | PlayerDiedType
   | PlayerGotTreasure
   | RestartButtonClicked
   | HomeButtonClickedType
+  | PlayerWalkedThroughDoor
 
 export type GameStateType = {
   context: null
-  value: 'home' | 'playing' | 'gameOver' | 'gameComplete'
+  value:
+    | 'home'
+    | 'playing'
+    | 'player.level1'
+    | 'player.level2'
+    | 'player.level3'
+    | 'gameOver'
+    | 'gameComplete'
 }
