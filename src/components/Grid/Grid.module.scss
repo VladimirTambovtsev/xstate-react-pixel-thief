@@ -1,0 +1,26 @@
+$grid_square_size: 64px;
+
+$number_of_grid_rows: 4px;
+$number_of_grid_columns: 12px;
+
+.layout {
+  width: calc(#{$number_of_grid_columns} * #{$grid_square_size});
+  height: calc(#{$number_of_grid_rows} * #{$grid_square_size});
+
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+}
+
+.grid_square {
+  width: #{$grid_square_size};
+  height: #{$grid_square_size};
+  position: absolute;
+
+  // top: $grid_square_size px;
+  // left: $grid_square_size px;
+
+  border: 1px solid#fff;
+}

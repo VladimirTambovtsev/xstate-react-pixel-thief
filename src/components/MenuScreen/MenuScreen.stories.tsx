@@ -2,11 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { MenuScreen } from './MenuScreen'
 
 export default {
-  title: 'MenuScreen',
+  title: 'Menu Screens/MenuScreen',
   component: MenuScreen,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof MenuScreen>
 
 const Template: ComponentStory<typeof MenuScreen> = (args) => (
