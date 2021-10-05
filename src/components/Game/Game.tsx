@@ -11,11 +11,9 @@ import level3BackgroundPng from '../../assets/images/level3Background.png'
 import { LevelBackground } from '../LevelBackground/LevelBackground'
 import { Grid } from '../Grid/Grid'
 import { Player } from '../Player/Player'
-// import { Treasure } from '../Treasure'
-// import { Monster } from '../Monster'
 import { MonsterActorType } from '../../state/monsterMachine/types'
 import { Treasure } from '../Treasure/Treasure'
-// import { ScreenTransition } from '../ScreenTransition'
+import { Monster } from '../Monster/Monster'
 
 interface PropsType {
   fastForwardEvents?: GameEventType[]
@@ -59,9 +57,9 @@ export const Game = ({ fastForwardEvents }: PropsType) => {
             <LevelBackground src={level2BackgroundPng} alt="Dungeon room" />
             <Grid>
               {playerActor && <Player actor={playerActor} />}
-              {/* {monsterActor && (
+              {monsterActor && (
                 <Monster actor={monsterActor as MonsterActorType} />
-              )} */}
+              )}
             </Grid>
           </>
         )
