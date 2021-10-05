@@ -5,9 +5,6 @@ import thiefGif from '../../assets/images/thief.gif'
 export default {
   title: 'Image',
   component: Image,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Image>
 
 const Template: ComponentStory<typeof Image> = (args) => <Image {...args} />

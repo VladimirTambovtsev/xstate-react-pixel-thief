@@ -5,9 +5,6 @@ import levelBackgroundImgPng from '../../assets/images/level1Background.png'
 export default {
   title: 'LevelBackground',
   component: LevelBackground,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof LevelBackground>
 
 export const Index: ComponentStory<typeof LevelBackground> = (args) => (
